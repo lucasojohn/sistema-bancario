@@ -1,3 +1,5 @@
+package banco;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +11,10 @@ public class Cliente {
 	Map<Integer, Conta> mapaDeContas = new HashMap<>();
 	
 	public Cliente(String cpf, String nome, String sobrenome){
-		
+            
+            this.cpf = cpf;
+            this.nome = nome;
+            this.sobrenome = sobrenome;
 	}
 
 	public String getNome() {

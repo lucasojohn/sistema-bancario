@@ -1,24 +1,132 @@
+package banco;
+
 import java.util.Scanner;
 
 public class Main {
 	
-	public static void main(String[] args) {
-		
-		Scanner s = new Scanner(System.in);
-		
-		// apresenta menu inicial para o usuário fazer a escolha de qual operação realizar 
-		Menu menuInicial = new Menu();
-		menuInicial.inicial();
-	
-		// usuario passa valor da opção desejada
-		int opcaoDesejada = s.nextInt();
+    public static void main(String[] args) {
 
-		// retorna menu da opção desejada
-		Menu retornaMenuDesejado = new Menu();
-		retornaMenuDesejado.submenu(opcaoDesejada);
+        Scanner s = new Scanner(System.in);
+        int opcaoDesejada;
+        
+        Agencia agencia = new Agencia(1234);
+        
+        do{
+            // apresenta menu inicial para o usuï¿½rio fazer a escolha de qual operaï¿½ï¿½o realizar 
+            Menu menu = new Menu();
+            menu.inicial();
+
+            // usuario passa valor da opï¿½ï¿½o desejada
+            opcaoDesejada = s.nextInt();
+
+            switch (opcaoDesejada) {
 		
-		// executa opção desejada
-		
-	}
+                case 1:                    
+                    menu.gerirContas();
+                    opcaoDesejada = s.nextInt();
+                    
+                    do{
+                        switch(opcaoDesejada){                          
+                                
+                            case 1:                                                          
+                                break;
+                                
+                            case 2:
+                                break;
+                                
+                            case 3:
+                                break;
+                                
+                            case 4:
+                                break;
+                                
+                            case 5:
+                                break;
+                                
+                            case 6:
+                                break;
+                                
+                            default:
+                                System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
+                                break;    
+                        }
+                    }while(opcaoDesejada != 6);
+                    break;
+
+                case 2:
+                    menu.gerirClientes();                    
+                    opcaoDesejada = s.nextInt();
+                    
+                    do{
+                        switch(opcaoDesejada){                          
+                                
+                            case 1:
+                                
+                                agencia.cadastrarCliente("444", "Pedro", "Pedroso");
+                                agencia.cadastrarConta(agencia.mapaDeClientes.get("444"), 130055);
+                                break;
+                                
+                            case 2:
+                                break;
+                                
+                            case 3:
+                                break;
+                                
+                            case 4:
+                                break;
+                                
+                            case 5:
+                                break;
+                                
+                            case 6:
+                                break;
+                                
+                            default:
+                                System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
+                                break;    
+                        }
+                    }while(opcaoDesejada != 6);
+                    break;
+
+                case 3:
+                    menu.acoesConta();
+                    opcaoDesejada = s.nextInt();
+                    
+                    do{
+                        switch(opcaoDesejada){                          
+                                
+                            case 1:
+                                break;
+                                
+                            case 2:
+                                break;
+                                
+                            case 3:
+                                break;
+                                
+                            case 4:
+                                break;                             
+                                
+                            default:
+                                System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
+                                break;    
+                        }
+                    }while(opcaoDesejada != 6);
+                    break;
+                
+                case 4:
+                    break;
+                    
+                case 5:
+                    break;
+                    
+                default:
+                    System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
+                    break;
+            }
+   
+        }while(opcaoDesejada != 5);
+
+    }
 
 }

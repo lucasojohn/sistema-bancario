@@ -1,3 +1,4 @@
+package banco;
 
 public abstract class Conta {
 	
@@ -6,8 +7,11 @@ public abstract class Conta {
 	private Cliente titular;
 	protected double saldo;
 	
-	public Conta(Cliente cliente) {
-		
+	public Conta(Cliente cliente, int numeroConta) {
+            this.titular = cliente;
+            this.numeroConta = numeroConta;
+            this.saldo = 0.0;
+            NUMERO_DE_CONTAS++; 
 	}
 	
 	public void saca(double valor) {

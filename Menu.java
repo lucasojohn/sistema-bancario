@@ -1,41 +1,43 @@
+package banco;
+
 public class Menu {
 
 	
 	public void inicial() {
 		
 		System.out.println("Seja bem vindo!");
-		System.out.println("Selecione a opção desejada:\n");
+		System.out.println("Selecione a opï¿½ï¿½o desejada:\n");
 		
 		System.out.println("1. Gerir contas");
 		System.out.println("2. Gerir clientes");
-		System.out.println("3. Gerir transações");
+		System.out.println("3. Gerir transaï¿½ï¿½es");
 		System.out.println("4. Gerir IRPF");
 		System.out.println("5. Sair");
 		
 	}	
 
 	
-	public void submenu(int opcaoDesejada) {
-		
-		switch (opcaoDesejada) {
-		
-			case 1:
-				Menu menuGerirContas = new Menu();
-				menuGerirContas.gerirContas();
-				break;
-			
-			case 2:
-				Menu menuGerirClientes = new Menu();
-				menuGerirClientes.gerirClientes();
-				break;
-				
-			case 3:
-				Menu menuAcoesConta = new Menu();
-				menuAcoesConta.acoesConta();
-				break;
-		}
-		
-	}	
+//	public void submenu(int opcaoDesejada) {
+//		
+//		switch (opcaoDesejada) {
+//		
+//			case 1:
+//				Menu menuGerirContas = new Menu();
+//				menuGerirContas.gerirContas();
+//				break;
+//			
+//			case 2:
+//				Menu menuGerirClientes = new Menu();
+//				menuGerirClientes.gerirClientes();
+//				break;
+//				
+//			case 3:
+//				Menu menuAcoesConta = new Menu();
+//				menuAcoesConta.acoesConta();
+//				break;
+//		}
+//		
+//	}	
 	
 	
 	public void gerirContas() {
@@ -65,8 +67,8 @@ public class Menu {
 	public void acoesConta() {
 		
 		System.out.println("1. Saque");
-		System.out.println("2. Depósito");
-		System.out.println("3. Transferência");
+		System.out.println("2. Depï¿½sito");
+		System.out.println("3. Transferï¿½ncia");
 		System.out.println("4. Voltar");
 		
 	}

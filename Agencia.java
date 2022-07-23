@@ -1,5 +1,8 @@
+package banco;
+
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Agencia {
 	
@@ -8,21 +11,26 @@ public class Agencia {
 	private int numeroAG;
 
 	public Agencia(int numeroAG) {
-		super();
 		this.numeroAG = numeroAG;
 		cadastrarCliente("123", "joao", "silva");
 	}
-
-	public Map<Integer, Conta> getMapaDeContas() {
-		return mapaDeContas;
-	}
-	
-	public void cadastrarCliente(String cpf, String nome, String sobrenome) {
+        
+        public void cadastrarCliente(String cpf, String nome, String sobrenome) {
 		
 		mapaDeClientes = new HashMap<>();
 		Cliente cliente = new Cliente(cpf, nome, sobrenome);
 		mapaDeClientes.put(cpf, cliente);
-	
+	}
+        
+        public void cadastrarConta(Cliente titular, int numeroConta) {
+		
+		mapaDeContas = new HashMap<>();
+		Conta conta = new ContaCorrente(titular, numeroConta);
+		mapaDeContas.put(numeroConta, conta);
+	}
+        
+	public Map<Integer, Conta> getMapaDeContas() {
+		return mapaDeContas;
 	}
 	
 	public void setMapaDeContas(Map<Integer, Conta> mapaDeContas) {
