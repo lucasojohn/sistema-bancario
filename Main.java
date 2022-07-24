@@ -1,135 +1,28 @@
-package banco;
-
 import java.util.Scanner;
 
+
 public class Main {
-	
-    public static void main(String[] args) {
 
-        Scanner s = new Scanner(System.in);
-        int opcaoDesejada;
-        
-        Agencia agencia = new Agencia(1234);
-        
-        do{
-            // apresenta menu inicial para o usuï¿½rio fazer a escolha de qual operaï¿½ï¿½o realizar 
-            Menu menu = new Menu();
-            menu.inicial();
-
-            // usuario passa valor da opï¿½ï¿½o desejada
-            opcaoDesejada = s.nextInt();
-
-            switch (opcaoDesejada) {
+	public static void main(String[] args) {
 		
-                case 1:                    
-                    menu.gerirContas();
-                    opcaoDesejada = s.nextInt();
-                    
-                    do{
-                        switch(opcaoDesejada){                          
-                                
-                            case 1: 
-                            	// AQUI
-                                break;
-                                
-                            case 2:
-                                break;
-                                
-                            case 3:
-                                break;
-                                
-                            case 4:
-                                break;
-                                
-                            case 5:
-                                break;
-                                
-                            case 6:
-                                break;
-                                
-                            default:
-                                System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
-                                break;    
-                        }
-                    }while(opcaoDesejada != 6);
-                    break;
+		Scanner s = new Scanner(System.in);
+		
+		// apresenta menu inicial para o usuário fazer a escolha de qual operação realizar 
+		MenuInicial menuInicial = new MenuInicial();
+		menuInicial.apresentarMenu();
+	
+		// usuario passa valor da opção desejada
+		int opcaoDesejada = s.nextInt();
 
-                case 2:
-                    menu.gerirClientes();                    
-                    opcaoDesejada = s.nextInt();
-                    
-                    do{
-                        switch(opcaoDesejada){                          
-                                
-                            case 1:
-                                
-                                agencia.cadastrarCliente("444", "Pedro", "Pedroso");
-                                agencia.cadastrarConta(agencia.mapaDeClientes.get("444"), 130055);
-                                menu.gerirClientes();                    
-                                opcaoDesejada = s.nextInt();
-                                break;
-                                
-                            case 2:
-                                break;
-                                
-                            case 3:
-                                break;
-                                
-                            case 4:
-                                break;
-                                
-                            case 5:
-                                break;
-                                
-                            case 6:
-                                break;
-                                
-                            default:
-                                System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
-                                break;    
-                        }
-                    }while(opcaoDesejada != 6);
-                    break;
-
-                case 3:
-                    menu.acoesConta();
-                    opcaoDesejada = s.nextInt();
-                    
-                    do{
-                        switch(opcaoDesejada){                          
-                                
-                            case 1:
-                                break;
-                                
-                            case 2:
-                                break;
-                                
-                            case 3:
-                                break;
-                                
-                            case 4:
-                                break;                             
-                                
-                            default:
-                                System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
-                                break;    
-                        }
-                    }while(opcaoDesejada != 6);
-                    break;
-                
-                case 4:
-                    break;
-                    
-                case 5:
-                    break;
-                    
-                default:
-                    System.out.println("Selecione uma opÃ§Ã£o vÃ¡lida!\n\n");
-                    break;
-            }
-   
-        }while(opcaoDesejada != 5);
-
-    }
+		// retorna menu da opção desejada
+		RetornaMenuDesejado retornaMenuDesejado = new RetornaMenuDesejado();
+		retornaMenuDesejado.retornaMenuEscolhido(opcaoDesejada);
+		
+		// executa opção desejada
+		
+		
+		
+		
+	}
 
 }
