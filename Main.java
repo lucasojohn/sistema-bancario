@@ -28,7 +28,8 @@ public class Main {
                     do{
                         switch(opcaoDesejada){                          
                                 
-                            case 1:                                                          
+                            case 1: 
+                            	// AQUI
                                 break;
                                 
                             case 2:
@@ -64,6 +65,8 @@ public class Main {
                                 
                                 agencia.cadastrarCliente("444", "Pedro", "Pedroso");
                                 agencia.cadastrarConta(agencia.mapaDeClientes.get("444"), 130055);
+                                menu.gerirClientes();                    
+                                opcaoDesejada = s.nextInt();
                                 break;
                                 
                             case 2:
