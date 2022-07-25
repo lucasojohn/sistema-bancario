@@ -9,7 +9,7 @@ public class Main {
         Scanner s = new Scanner(System.in);
         int opcaoDesejada;
         
-        Agencia agencia = new Agencia(1234);
+        Agencia agencia = new Agencia();
         
         do{
             // apresenta menu inicial para o usuï¿½rio fazer a escolha de qual operaï¿½ï¿½o realizar 
@@ -36,11 +36,11 @@ public class Main {
                             	Cliente cliente = agencia.mapaDeClientes.get(cpf);
                             	
                             	try {
-                            		agencia.cadastrarConta(cliente, 123456);
+                            		agencia.cadastrarConta(cliente);
                             		System.out.println("Conta cadastrada\n");  
                             		
                             	} catch (NullPointerException e) {
-                            		System.out.println("Cliente não localizado, favor realizar cadastro do cliente\n");
+                            		System.out.println("Cliente nï¿½o localizado, favor realizar cadastro do cliente\n");
                             	}
                             		
                                 break;
@@ -86,24 +86,31 @@ public class Main {
                     break;
 
                 case 2:
-                    menu.gerirClientes();                    
-                    opcaoDesejada = s.nextInt();
                     
                     do{
+                        menu.gerirClientes();                    
+                        opcaoDesejada = s.nextInt();
                         switch(opcaoDesejada){                          
                                 
                             case 1:
-                                
-                                agencia.cadastrarCliente("444", "Pedro", "Pedroso");
-                                agencia.cadastrarConta(agencia.mapaDeClientes.get("444"), 130055);
-                                menu.gerirClientes();                    
-                                opcaoDesejada = s.nextInt();
+                                agencia.cadastrarCliente();
+              
                                 break;
                                 
                             case 2:
+                                
+                                agencia.atualizarCliente();
+
                                 break;
                                 
                             case 3:
+                                //Collection<Cliente> c = agencia.mapaDeClientes.values().forEach(action);
+                                
+                                //agencia.mapaDeClientes.values().to
+                                //https://www.alura.com.br/artigos/iterando-por-um-hashmap-em-java#:~:text=Para%20alcan%C3%A7ar%20tal%20resultado%2C%20precisamos,valor%20respectivamente%20do%20nosso%20mapa.
+//                                Cliente[] arrClientes = new Cliente[agencia.mapaDeClientes.size()];
+//                                agencia.mapaDeClientes.values().toArray(arrClientes);
+                                
                                 break;
                                 
                             case 4:
@@ -130,7 +137,6 @@ public class Main {
                         switch(opcaoDesejada){                          
                                 
                             case 1:
-                            	
                                 break;
                                 
                             case 2:

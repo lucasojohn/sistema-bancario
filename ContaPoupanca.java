@@ -12,4 +12,9 @@ public class ContaPoupanca extends Conta{
     	
     	
 	}
+
+    @Override
+    public double calculaTributos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

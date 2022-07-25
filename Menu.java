@@ -15,30 +15,6 @@ public class Menu {
 		System.out.println("5. Sair");
 		
 	}	
-
-	
-//	public void submenu(int opcaoDesejada) {
-//		
-//		switch (opcaoDesejada) {
-//		
-//			case 1:
-//				Menu menuGerirContas = new Menu();
-//				menuGerirContas.gerirContas();
-//				break;
-//			
-//			case 2:
-//				Menu menuGerirClientes = new Menu();
-//				menuGerirClientes.gerirClientes();
-//				break;
-//				
-//			case 3:
-//				Menu menuAcoesConta = new Menu();
-//				menuAcoesConta.acoesConta();
-//				break;
-//		}
-//		
-//	}	
-	
 	
 	public void gerirContas() {
 		
