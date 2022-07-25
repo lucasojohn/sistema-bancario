@@ -1,6 +1,6 @@
 package banco;
 
-public abstract class Conta {
+public abstract class Conta implements Tributavel{
 	
 	private static int NUMERO_DE_CONTAS;
 	private int numeroConta;
@@ -15,7 +15,7 @@ public abstract class Conta {
 	}
 	
 	public void saca(double valor) {
-		
+		SaldoInsuficienteException saldoInsuficiente = new SaldoInsuficienteException();
 	}
 	
 	public void deposita(double valor) {
@@ -27,10 +27,8 @@ public abstract class Conta {
 	}
 	
 	
-	public void atualiza(double taxa) {
-		
-	}
-
+	public abstract void atualiza(double taxa);
+	
 
 	public static int getNUMERO_DE_CONTAS() {
 		return NUMERO_DE_CONTAS;
