@@ -10,11 +10,42 @@ public class Agencia {
 	Map<String, Cliente> mapaDeClientes = new HashMap<>();
 	private int numeroAG;
         Scanner s = new Scanner(System.in);
+        
+        public void excluirCliente(){
+            try{
+                System.out.println("Digite o CPF: ");
+                String cpf = s.next();
+                Cliente cliente;
+                cliente = mapaDeClientes.get(cpf);
+                
+                mapaDeClientes.remove(cpf);
+            } catch(NullPointerException a) {
+                System.out.println("Cliente informado não existe!\n");
+            }
+        }
+        
+        public void listarUmCliente(){
+            try{
+                System.out.println("Digite o CPF: ");
+                String cpf = s.next();
+                Cliente cliente;
+                cliente = mapaDeClientes.get(cpf);
+                System.out.println("CPF: " + cliente.getCpf());
+                System.out.println("Nome: " + cliente.getNome());
+                System.out.println("Sobrenome: " + cliente.getSobrenome());
+            } catch(NullPointerException a) {
+                System.out.println("Cliente informado não existe!\n");
+            }
+        }
+        
+        public void listarClientes(){
 
-//	public Agencia(int numeroAG) {
-//		this.numeroAG = numeroAG;
-//		cadastrarCliente();
-//	}
+            for(Map.Entry<String, Cliente> teste : mapaDeClientes.entrySet()){
+                System.out.println("CPF: " + teste.getKey());
+                System.out.println("Nome: " + teste.getValue().getNome());
+                System.out.println("Sobrenome: " + teste.getValue().getSobrenome() + "\n");
+            }
+        }
 
 	public void cadastrarCliente() {
                 
@@ -25,7 +56,7 @@ public class Agencia {
                 System.out.print("Digite o sobrenome: ");
                 String sobrenome = s.next();
             
-		mapaDeClientes = new HashMap<>();
+		
 		Cliente cliente = new Cliente(cpf, nome, sobrenome);
 		mapaDeClientes.put(cpf, cliente);
                 
@@ -53,7 +84,6 @@ public class Agencia {
                 
                 int opcao;
                 Conta conta;
-                mapaDeContas = new HashMap<>();
                 int numeroConta;
                         
                 do{

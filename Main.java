@@ -94,29 +94,27 @@ public class Main {
                                 
                             case 1:
                                 agencia.cadastrarCliente();
-              
                                 break;
                                 
-                            case 2:
-                                
+                            case 2:      
                                 agencia.atualizarCliente();
-
                                 break;
                                 
                             case 3:
                                 //Collection<Cliente> c = agencia.mapaDeClientes.values().forEach(action);
-                                
+                                agencia.listarClientes();
                                 //agencia.mapaDeClientes.values().to
                                 //https://www.alura.com.br/artigos/iterando-por-um-hashmap-em-java#:~:text=Para%20alcan%C3%A7ar%20tal%20resultado%2C%20precisamos,valor%20respectivamente%20do%20nosso%20mapa.
 //                                Cliente[] arrClientes = new Cliente[agencia.mapaDeClientes.size()];
 //                                agencia.mapaDeClientes.values().toArray(arrClientes);
-                                
                                 break;
                                 
                             case 4:
+                                agencia.listarUmCliente();
                                 break;
                                 
                             case 5:
+                                agencia.excluirCliente();
                                 break;
                                 
                             case 6:
