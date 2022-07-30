@@ -3,50 +3,50 @@ package banco;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Cliente {
-	private String nome;
-	private String sobrenome;
-	private String cpf;
-	Map<Integer, Conta> mapaDeContas = new HashMap<>();
-	
-	public Cliente(String cpf, String nome, String sobrenome){
-            
-            this.cpf = cpf;
-            this.nome = nome;
-            this.sobrenome = sobrenome;
-	}
 
-	public String getNome() {
-		return nome;
-	}
+    private String nome;
+    private String sobrenome;
+    private String cpf;
+    Map<Integer, Conta> mapaDeContas = new HashMap<>();
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Cliente(String cpf, String nome, String sobrenome) {
 
-	public String getSobrenome() {
-		return sobrenome;
-	}
+        this.cpf = cpf;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
 
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+    public String getSobrenome() {
+        return sobrenome;
+    }
 
-	public Map<Integer, Conta> getMapaDeContas() {
-		return mapaDeContas;
-	}
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
 
-	public void setMapaDeContas(Map<Integer, Conta> mapaDeContas) {
-		this.mapaDeContas = mapaDeContas;
-	}
-	
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Map<Integer, Conta> getMapaDeContas() {
+        return mapaDeContas;
+    }
+
+    public void setMapaDeContas(Map<Integer, Conta> mapaDeContas) {
+        this.mapaDeContas = mapaDeContas;
+    }
+
 }
