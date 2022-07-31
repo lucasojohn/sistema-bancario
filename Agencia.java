@@ -47,6 +47,7 @@ public class Agencia {
             System.out.println("CPF: " + cliente.getCpf());
             System.out.println("Nome: " + cliente.getNome());
             System.out.println("Sobrenome: " + cliente.getSobrenome());
+            System.out.println("Total de contas: " + cliente.mapaDeContas.size());
         } catch (NullPointerException a) {
             System.out.println("Cliente informado não existe!\n");
         }
