@@ -118,6 +118,9 @@ public class Agencia {
             if (opcao == 1) {
                 mapaDeContas.remove(nrConta);
                 cliente.mapaDeContas.remove(nrConta);
+                if(cliente.mapaDeContas.isEmpty()) {
+                	mapaDeContas.remove(null, cliente);
+                }
                 System.out.println("Conta excluída com sucesso");
             } else {
                 System.out.println("Falha na exclusão da conta");
@@ -148,14 +151,14 @@ public class Agencia {
 
     public void listarContas() {
 
-        for (Map.Entry<Integer, Conta> teste : mapaDeContas.entrySet()) {
-            System.out.println("Número da Conta: " + teste.getKey());
-            if (teste instanceof ContaCorrente) {
+        for (Map.Entry<Integer, Conta> conta : mapaDeContas.entrySet()) {
+            System.out.println("Número da Conta: " + conta.getKey());
+            if (conta instanceof ContaCorrente) {
                 System.out.println("Tipo de conta: Corrente");
-            } else if (teste instanceof ContaPoupanca) {
+            } else if (conta instanceof ContaPoupanca) {
                 System.out.println("Tipo de conta: Poupança");
             }
-            System.out.println("Saldo: " + teste.getValue().getSaldo() + "\n");
+            System.out.println("Saldo: " + conta.getValue().getSaldo() + "\n");
         }
     }
 
