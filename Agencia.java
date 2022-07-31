@@ -116,11 +116,16 @@ public class Agencia {
             int opcao = s.nextInt();
 
             if (opcao == 1) {
-                mapaDeContas.remove(nrConta);
-                cliente.mapaDeContas.remove(nrConta);
-                if(cliente.mapaDeContas.isEmpty()) {
-                	mapaDeContas.remove(null, cliente);
+                
+                if(cliente.mapaDeContas.size() == 1) {
+                	mapaDeContas.remove(nrConta);
+                    cliente.mapaDeContas.remove(nrConta);
+                	mapaDeClientes.remove(cliente.getCpf());
+                } else {
+                	mapaDeContas.remove(nrConta);
+                    cliente.mapaDeContas.remove(nrConta);
                 }
+                
                 System.out.println("Conta excluída com sucesso");
             } else {
                 System.out.println("Falha na exclusão da conta");
