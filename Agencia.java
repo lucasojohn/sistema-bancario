@@ -55,10 +55,11 @@ public class Agencia {
 
     public void listarClientes() {
 
-        for (Map.Entry<String, Cliente> teste : mapaDeClientes.entrySet()) {
-            System.out.println("CPF: " + teste.getKey());
-            System.out.println("Nome: " + teste.getValue().getNome());
-            System.out.println("Sobrenome: " + teste.getValue().getSobrenome() + "\n");
+        for (Map.Entry<String, Cliente> conta : mapaDeClientes.entrySet()) {
+            System.out.println("CPF: " + conta.getKey());
+            System.out.println("Nome: " + conta.getValue().getNome());
+            System.out.println("Sobrenome: " + conta.getValue().getSobrenome());
+            System.out.println("Total de conta(s): " + conta.getValue().mapaDeContas.size() + "\n");
         }
     }
 
