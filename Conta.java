@@ -30,11 +30,22 @@ public abstract class Conta implements Tributavel {
     }
 
     public void deposita(double valor) {
-
+    	if(valor > 0) {
+    		saldo += this.saldo + valor;
+    		System.out.println("Saldo atual: R$ " + saldo);
+    		s.nextLine();
+    	} else {
+    		throw new IllegalArgumentException();
+    	}
     }
 
-    public void transfere(Conta destino, double valor) {
-
+    public void transfere(Conta contaRecebedora, double valor) {
+    	
+    	if(valor > 0) {
+    		this.saca(valor);
+    		contaRecebedora.deposita(valor);
+    		s.nextLine();
+    	}
     }
 
     public abstract void atualiza(double taxa);

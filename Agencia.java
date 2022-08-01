@@ -165,7 +165,6 @@ public class Agencia {
     public void listarContas() {
 
         for (Map.Entry<Integer, Conta> conta : mapaDeContas.entrySet()) {
-            //System.out.println("Saldo: " + conta.getValue().getSaldo() + "\n");
             System.out.println(conta.getValue().toString());
         }
         s.nextLine();

@@ -26,13 +26,8 @@ public class ContaCorrente extends Conta {
 
     @Override
     public double calculaTributos() {
-    	/* System.out.println("Digite o número da conta: ");
-        int nrConta = s.nextInt();
-        Conta conta;
-        conta = mapaDeContas.get(nrConta);
-        double saldoParcial = conta.getSaldo() * (10/100);
-        return saldoParcial; */
-    	return 0;
+    	double result = saldo * (10/100);
+        return result; 
     }
     
     @Override

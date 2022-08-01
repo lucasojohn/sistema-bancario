@@ -127,9 +127,60 @@ public class Main {
                                 break;
 
                             case 2:
+                            	System.out.println("Informe a conta que deseja realizar o dep�sito:");
+                            	int contaBancaria = s.nextInt();
+                            	Conta contaDep = agencia.mapaDeContas.get(contaBancaria); 
+                            	try {
+                            		System.out.println("Conta número " + contaDep.getNumeroConta() + " selecionada");
+                                	if(contaDep instanceof ContaCorrente) {
+                                		System.out.println("Informe o valor que deseja depositar na conta corrente:");
+                                	} else {
+                                		System.out.println("Informe o valor que deseja depositar na conta poupanca:");
+                                	}
+                            		
+                            		double valor = s.nextInt();
+                                	if(valor < 0) {
+                                		throw new IllegalArgumentException();
+                                	}
+                                	contaDep.deposita(valor);
+                            	} catch (NullPointerException a) {
+                                    System.out.println("Conta informada não existe");
+                                } catch(IllegalArgumentException a) {
+                                	System.out.println("Valor para dep�sito tem que ser positivo");
+                                }
                                 break;
 
                             case 3:
+                            	System.out.println("Informe o numero da conta que vai transferir o saldo:\n");
+                            	int contaEnvia = s.nextInt();
+                            	Conta contaEnviadora = agencia.mapaDeContas.get(contaEnvia); 
+                            	try {
+                            		System.out.println("Conta número " + contaEnviadora.getNumeroConta() + " selecionada");
+                                	
+                            		if(contaEnviadora instanceof ContaCorrente) {
+                                		System.out.println("Informe o valor que deseja transferir da conta corrente:");
+                                	} else {
+                                		System.out.println("Informe o valor que deseja transferir da conta poupanca:");
+                                	}
+                            		System.out.println("Informe o numero da conta de destino:");                            		
+                            		double contaRecebe = s.nextInt();
+                            		Conta contaRecebedora = agencia.mapaDeContas.get(contaRecebe);
+                                	try {
+                                		System.out.println("Informe o valor da trasferencia para a conta " + contaRecebedora.getNumeroConta());
+                                		double valor = s.nextDouble();
+                                		if(valor < 0) {
+                                    		throw new IllegalArgumentException();
+                                    	}
+                                    	contaEnviadora.transfere(contaRecebedora, valor);
+                                	} catch (NullPointerException a) {
+                                        System.out.println("Conta informada não existe");
+                                    }
+                            	} catch (NullPointerException a) {
+                                    System.out.println("Conta informada não existe");
+                                } catch(IllegalArgumentException a) {
+                                 	System.out.println("Valor para transferencia tem que ser positivo");
+                                 }
+                            	
                                 break;
 
                             case 4:
@@ -143,6 +194,37 @@ public class Main {
                     break;
 
                 case 4:
+                	System.out.println("Informe o CPF do cliente para realizar o calculo de IRPF de todas suas contas:");
+                	String cpf = s.next();
+                    Cliente cliente = agencia.mapaDeClientes.get(cpf);
+                    
+                	try {
+                		System.out.println("Cliente " + cliente.getNome() + " selecionado");
+                		GerenciadorIRPF gerenciador = new GerenciadorIRPF();
+                		Conta[] contas = new Conta[cliente.mapaDeContas.size()];
+                		cliente.mapaDeContas.values().toArray(contas);
+                		
+                		for(int i=0; i<contas.length; i++) {
+                			gerenciador.adicionaTributos(contas[i].saldo);
+                		}
+                		
+                		if(gerenciador.getTotalDeSaldo() < 1903.98) {
+                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 0);
+                		} else if (gerenciador.getTotalDeSaldo() < 2862.65 && gerenciador.getTotalDeSaldo() > 1903.99) {
+                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 142.80);                			
+                		} else if (gerenciador.getTotalDeSaldo() < 3751.05 && gerenciador.getTotalDeSaldo() > 2826.66) {
+                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 354.80);
+                		} else if (gerenciador.getTotalDeSaldo() < 4664.68 && gerenciador.getTotalDeSaldo() > 3751.06) {
+                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 636.13);
+                		} else if (gerenciador.getTotalDeSaldo() > 4664.68){
+                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 869.36);
+                		}
+                		
+                		System.out.println("Imposto de renda: R$ " + gerenciador.getTotal());
+                		
+                	} catch (NullPointerException a) {
+                        System.out.println("Cliente informado não existe");
+                    }
                     break;
 
                 case 5:

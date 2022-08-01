@@ -11,9 +11,10 @@ package banco;
  */
 public class GerenciadorIRPF {
     private double total;
+    private double totalDeSaldo;
     
-    public void adicionaTributos(Tributavel t){
-        
+    public void adicionaTributos(double saldo){
+    	double totalDeSaldo =+ saldo;
     }
 
     public double getTotal() {
@@ -23,6 +24,16 @@ public class GerenciadorIRPF {
     public void setTotal(double total) {
         this.total = total;
     }
+
+	public double getTotalDeSaldo() {
+		return totalDeSaldo;
+	}
+
+	public void setTotalDeSaldo(double totalDeSaldo) {
+		this.totalDeSaldo = totalDeSaldo;
+	}
+    
+    
     
     
 }
