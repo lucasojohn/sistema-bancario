@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 public class Main {
 
+	Scanner s = new Scanner(System.in);
+	
     public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);
         int opcaoDesejada;
 
         Agencia agencia = new Agencia();
-
+        
         do {
             // apresenta menu inicial para o usuï¿½rio fazer a escolha de qual operaï¿½ï¿½o realizar 
             Menu menu = new Menu();
@@ -103,6 +105,25 @@ public class Main {
                         switch (opcaoDesejada) {
 
                             case 1:
+                            	System.out.println("Informe a conta que deseja realizar o saque:");
+                            	int contaBanco = s.nextInt();
+                            	Conta conta = agencia.mapaDeContas.get(contaBanco); 
+                            	try {
+                            		System.out.println("Conta nÃºmero " + conta.getNumeroConta() + " selecionada");
+                                	System.out.println("Informe o valor que deseja sacar da conta:");
+                                	double valor = s.nextInt();
+                                	if(valor < 0) {
+                                		throw new IllegalArgumentException();
+                                	}
+                                	conta.saca(valor);
+                            	} catch (NullPointerException a) {
+                                    System.out.println("Conta informada nÃ£o existe");
+                                } catch (SaldoInsuficienteException a) {
+                                	System.out.println("Saldo insuficiente");
+                                } catch(IllegalArgumentException a) {
+                                	System.out.println("Valor informado não é aceito");
+                                }
+                            	
                                 break;
 
                             case 2:

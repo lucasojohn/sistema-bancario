@@ -1,11 +1,14 @@
 package banco;
 
+import java.util.Scanner;
+
 public abstract class Conta implements Tributavel {
 
     private static int NUMERO_DE_CONTAS = 0;
-    private int numeroConta;
+    protected int numeroConta;
     private Cliente titular;
     protected double saldo;
+    Scanner s = new Scanner(System.in);
 
     public Conta(Cliente cliente, int numeroConta) {
         this.titular = cliente;
@@ -16,7 +19,14 @@ public abstract class Conta implements Tributavel {
     
     
     public void saca(double valor) {
-        SaldoInsuficienteException saldoInsuficiente = new SaldoInsuficienteException();
+    	
+    	if(this.saldo > valor) {
+    		saldo = this.saldo - valor;
+    		System.out.println("Saldo atual: R$ " + saldo);
+    		s.nextLine();
+    	} else {
+    		throw new SaldoInsuficienteException();
+    	}
     }
 
     public void deposita(double valor) {
@@ -47,6 +57,8 @@ public abstract class Conta implements Tributavel {
 
     public Cliente getTitular() {
         return titular;
+        
+       
     }
 
     public void setTitular(Cliente titular) {
@@ -61,4 +73,5 @@ public abstract class Conta implements Tributavel {
         this.saldo = saldo;
     }
 
+	
 }

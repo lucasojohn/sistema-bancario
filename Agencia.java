@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Agencia {
 
+	Menu menu = new Menu();
     Map<Integer, Conta> mapaDeContas = new HashMap<>();
     Map<String, Cliente> mapaDeClientes = new HashMap<>();
     private int numeroAG;
@@ -32,10 +33,11 @@ public class Agencia {
             } else {
                 System.out.println("Falha na exclusão do cliente");
             }
-
+            
         } catch (NullPointerException a) {
             System.out.println("Cliente informado não existe!\n");
         }
+        s.nextLine();
     }
 
     public void listarUmCliente() {
@@ -51,6 +53,7 @@ public class Agencia {
         } catch (NullPointerException a) {
             System.out.println("Cliente informado não existe!\n");
         }
+        s.nextLine();
     }
 
     public void listarClientes() {
@@ -61,6 +64,8 @@ public class Agencia {
             System.out.println("Sobrenome: " + conta.getValue().getSobrenome());
             System.out.println("Total de conta(s): " + conta.getValue().mapaDeContas.size() + "\n");
         }
+        s.nextLine();
+        menu.acoesConta();
     }
 
     public void cadastrarCliente() {
@@ -132,7 +137,7 @@ public class Agencia {
             } else {
                 System.out.println("Falha na exclusão da conta");
             }
-
+            s.nextLine();
         } catch (NullPointerException a) {
             System.out.println("Cliente informado não existe!\n");
         }
@@ -151,6 +156,7 @@ public class Agencia {
                 System.out.println("Tipo de conta: Poupança");
             }
             System.out.println("Saldo: " + conta.getSaldo() + "\n");
+            s.nextLine();
         } catch (NullPointerException a) {
             System.out.println("Conta informada não existe!\n");
         }
@@ -159,14 +165,10 @@ public class Agencia {
     public void listarContas() {
 
         for (Map.Entry<Integer, Conta> conta : mapaDeContas.entrySet()) {
-            System.out.println("Número da Conta: " + conta.getKey());
-            if (conta instanceof ContaCorrente) {
-                System.out.println("Tipo de conta: Corrente");
-            } else if (conta instanceof ContaPoupanca) {
-                System.out.println("Tipo de conta: Poupança");
-            }
-            System.out.println("Saldo: " + conta.getValue().getSaldo() + "\n");
+            //System.out.println("Saldo: " + conta.getValue().getSaldo() + "\n");
+            System.out.println(conta.getValue().toString());
         }
+        s.nextLine();
     }
 
     public void atualizarConta() {
@@ -174,14 +176,14 @@ public class Agencia {
         try {
             System.out.print("Informe o numero da conta que deseja atualizar: ");
             int nrConta = s.nextInt();
-            Conta conta = mapaDeContas.get(nrConta);
-
+            Conta conta = mapaDeContas.get(nrConta);            
             System.out.println("Conta número " + conta.getNumeroConta() + " selecionada");
 
             System.out.println("Informe novo saldo para a conta:");
             double novoSaldo = s.nextDouble();
             conta.setSaldo(novoSaldo);
             System.out.println("Saldo atualizado com sucesso!");
+            s.nextLine();
 
         } catch (NullPointerException a) {
             System.out.println("Conta informada não existe");

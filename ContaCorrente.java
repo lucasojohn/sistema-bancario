@@ -26,6 +26,17 @@ public class ContaCorrente extends Conta {
 
     @Override
     public double calculaTributos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	/* System.out.println("Digite o número da conta: ");
+        int nrConta = s.nextInt();
+        Conta conta;
+        conta = mapaDeContas.get(nrConta);
+        double saldoParcial = conta.getSaldo() * (10/100);
+        return saldoParcial; */
+    	return 0;
+    }
+    
+    @Override
+    public String toString() {
+    	return "Conta corrente | numero: "+ this.numeroConta +" | saldo: "+ this.saldo;
     }
 }
