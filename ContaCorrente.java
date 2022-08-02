@@ -9,14 +9,14 @@ public class ContaCorrente extends Conta {
 	Scanner s = new Scanner(System.in);
 	Map<Integer, Conta> mapaDeContas = new HashMap<>();
 	
-    public ContaCorrente(Cliente cliente, int numeroConta) {
-        super(cliente, numeroConta);
+    public ContaCorrente(Cliente cliente, int numeroConta, double saldo) {
+        super(cliente, numeroConta, saldo);
     }
 
     @Override
     public void atualiza(double taxa) {
     	
-    	System.out.println("Digite o número da conta: ");
+    	System.out.println("Digite o nï¿½mero da conta: ");
         int nrConta = s.nextInt();
         Conta conta;
         conta = mapaDeContas.get(nrConta);

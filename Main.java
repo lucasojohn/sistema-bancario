@@ -121,13 +121,13 @@ public class Main {
                                 } catch (SaldoInsuficienteException a) {
                                 	System.out.println("Saldo insuficiente");
                                 } catch(IllegalArgumentException a) {
-                                	System.out.println("Valor informado n�o � aceito");
+                                	System.out.println("Valor informado n�o � aceito");
                                 }
                             	
                                 break;
 
                             case 2:
-                            	System.out.println("Informe a conta que deseja realizar o dep�sito:");
+                            	System.out.println("Informe a conta que deseja realizar o dep�sito:");
                             	int contaBancaria = s.nextInt();
                             	Conta contaDep = agencia.mapaDeContas.get(contaBancaria); 
                             	try {
@@ -146,7 +146,7 @@ public class Main {
                             	} catch (NullPointerException a) {
                                     System.out.println("Conta informada não existe");
                                 } catch(IllegalArgumentException a) {
-                                	System.out.println("Valor para dep�sito tem que ser positivo");
+                                	System.out.println("Valor para dep�sito tem que ser positivo");
                                 }
                                 break;
 
@@ -158,12 +158,13 @@ public class Main {
                             		System.out.println("Conta número " + contaEnviadora.getNumeroConta() + " selecionada");
                                 	
                             		if(contaEnviadora instanceof ContaCorrente) {
-                                		System.out.println("Informe o valor que deseja transferir da conta corrente:");
+                                		System.out.println("Selecionado transferência da conta corrente");
                                 	} else {
-                                		System.out.println("Informe o valor que deseja transferir da conta poupanca:");
+                                		System.out.println("Selecionado transferência da conta poupanca");
                                 	}
+
                             		System.out.println("Informe o numero da conta de destino:");                            		
-                            		double contaRecebe = s.nextInt();
+                            		int contaRecebe = s.nextInt();
                             		Conta contaRecebedora = agencia.mapaDeContas.get(contaRecebe);
                                 	try {
                                 		System.out.println("Informe o valor da trasferencia para a conta " + contaRecebedora.getNumeroConta());
@@ -194,8 +195,8 @@ public class Main {
                     break;
 
                 case 4:
-                	System.out.println("Informe o CPF do cliente para realizar o calculo de IRPF de todas suas contas:");
-                	String cpf = s.next();
+                    System.out.println("Informe o CPF do cliente para realizar o calculo de IRPF de todas suas contas:");
+                    String cpf = s.next();
                     Cliente cliente = agencia.mapaDeClientes.get(cpf);
                     
                 	try {
@@ -209,18 +210,21 @@ public class Main {
                 		}
                 		
                 		if(gerenciador.getTotalDeSaldo() < 1903.98) {
-                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 0);
+                                    System.out.println("O valor do imposto de renda é R$0");
+
                 		} else if (gerenciador.getTotalDeSaldo() < 2862.65 && gerenciador.getTotalDeSaldo() > 1903.99) {
-                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 142.80);                			
+                                    System.out.println("O valor do imposto de renda é R$142,80");
+              			
                 		} else if (gerenciador.getTotalDeSaldo() < 3751.05 && gerenciador.getTotalDeSaldo() > 2826.66) {
-                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 354.80);
+                                    System.out.println("O valor do imposto de renda é R$354,80");
+
                 		} else if (gerenciador.getTotalDeSaldo() < 4664.68 && gerenciador.getTotalDeSaldo() > 3751.06) {
-                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 636.13);
+                                    System.out.println("O valor do imposto de renda é R$636,13");
+
                 		} else if (gerenciador.getTotalDeSaldo() > 4664.68){
-                			gerenciador.setTotal(gerenciador.getTotalDeSaldo() - 869.36);
+                                    System.out.println("O valor do imposto de renda é R$869,36");
+
                 		}
-                		
-                		System.out.println("Imposto de renda: R$ " + gerenciador.getTotal());
                 		
                 	} catch (NullPointerException a) {
                         System.out.println("Cliente informado não existe");

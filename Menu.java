@@ -3,7 +3,7 @@ package banco;
 public class Menu {
 
     public void inicial() {
-
+        System.out.println("");
         System.out.println("Seja bem vindo!");
         System.out.println("Selecione a opção desejada:\n");
 
@@ -16,7 +16,8 @@ public class Menu {
     }
 
     public void gerirContas() {
-
+        
+        System.out.println("");
         System.out.println("1. Cadastrar conta");
         System.out.println("2. Atualizar conta");
         System.out.println("3. Listar contas");
@@ -27,7 +28,8 @@ public class Menu {
     }
 
     public void gerirClientes() {
-
+        
+        System.out.println("");
         System.out.println("1. Cadastrar cliente");
         System.out.println("2. Atualizar cliente");
         System.out.println("3. Listar clientes");
@@ -38,7 +40,8 @@ public class Menu {
     }
 
     public void acoesConta() {
-
+        
+        System.out.println("");
         System.out.println("1. Saque");
         System.out.println("2. Dep�sito");
         System.out.println("3. Transferência");

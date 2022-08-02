@@ -10,10 +10,10 @@ public abstract class Conta implements Tributavel {
     protected double saldo;
     Scanner s = new Scanner(System.in);
 
-    public Conta(Cliente cliente, int numeroConta) {
+    public Conta(Cliente cliente, int numeroConta, double saldo) {
         this.titular = cliente;
         this.numeroConta = numeroConta;
-        this.saldo = 0.0;
+        this.saldo = saldo;
         NUMERO_DE_CONTAS++;
     }
     
@@ -31,7 +31,7 @@ public abstract class Conta implements Tributavel {
 
     public void deposita(double valor) {
     	if(valor > 0) {
-    		saldo += this.saldo + valor;
+    		saldo += valor;
     		System.out.println("Saldo atual: R$ " + saldo);
     		s.nextLine();
     	} else {

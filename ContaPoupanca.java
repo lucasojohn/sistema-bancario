@@ -11,13 +11,13 @@ public class ContaPoupanca extends Conta {
 	Scanner s = new Scanner(System.in);
 	Map<Integer, Conta> mapaDeContas = new HashMap<>();
 	
-    public ContaPoupanca(Cliente cliente, int numeroConta) {
-        super(cliente, numeroConta);
+    public ContaPoupanca(Cliente cliente, int numeroConta, double saldo) {
+        super(cliente, numeroConta, saldo);
     }
 
     public void atualiza(double taxa) {
     	
-    	System.out.println("Digite o número da conta: ");
+    	System.out.println("Digite o nÃºmero da conta: ");
         int nrConta = s.nextInt();
         Conta conta;
         conta = mapaDeContas.get(nrConta);
@@ -32,6 +32,6 @@ public class ContaPoupanca extends Conta {
     
     @Override
     public String toString() {
-    	return "Conta poupança | numero: "+ this.numeroConta +" | saldo: "+ this.saldo;
+    	return "Conta poupanÃ§a | numero: "+ this.numeroConta +" | saldo: "+ this.saldo;
     }
 }

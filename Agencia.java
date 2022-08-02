@@ -14,7 +14,7 @@ public class Agencia {
 
     public void excluirCliente() {
         try {
-            System.out.println("Digite o CPF: ");
+            System.out.print("Digite o CPF: ");
             String cpf = s.next();
             Cliente cliente = mapaDeClientes.get(cpf);
             System.out.println("Cliente de CPF " + cliente.getCpf() + " selecionado");
@@ -23,11 +23,16 @@ public class Agencia {
             int opcao = s.nextInt();
 
             if (opcao == 1) {
-                for (int nrConta : mapaDeContas.keySet()) {
-                    if (mapaDeContas.get(nrConta).equals(cliente.mapaDeContas.get(nrConta))) {
-                        excluirConta(cliente, nrConta);
-                    }
+                Conta[] contas = new Conta[cliente.mapaDeContas.size()];
+                cliente.mapaDeContas.values().toArray(contas);
+                for(int i=0; i<contas.length; i++){
+                    excluirConta(cliente, contas[i].getNumeroConta());
                 }
+//                for (int nrConta : mapaDeContas.keySet()) {
+//                    if (mapaDeContas.get(nrConta).equals(cliente.mapaDeContas.get(nrConta))) {
+//                        excluirConta(cliente, nrConta);
+//                    }
+//                }
                 mapaDeClientes.remove(cpf);
                 System.out.println("Cliente excluído com sucesso");
             } else {
@@ -42,11 +47,11 @@ public class Agencia {
 
     public void listarUmCliente() {
         try {
-            System.out.println("Digite o CPF: ");
+            System.out.print("Digite o CPF: ");
             String cpf = s.next();
             Cliente cliente;
             cliente = mapaDeClientes.get(cpf);
-            System.out.println("CPF: " + cliente.getCpf());
+            System.out.println("\nCPF: " + cliente.getCpf());
             System.out.println("Nome: " + cliente.getNome());
             System.out.println("Sobrenome: " + cliente.getSobrenome());
             System.out.println("Total de contas: " + cliente.mapaDeContas.size());
@@ -65,7 +70,7 @@ public class Agencia {
             System.out.println("Total de conta(s): " + conta.getValue().mapaDeContas.size() + "\n");
         }
         s.nextLine();
-        menu.acoesConta();
+        //menu.acoesConta();
     }
 
     public void cadastrarCliente() {
@@ -104,9 +109,10 @@ public class Agencia {
 
         Conta conta = mapaDeContas.get(nrConta);
         System.out.println("Conta número " + conta.getNumeroConta() + " selecionada");
-
-        mapaDeContas.remove(nrConta);
+        
         titular.mapaDeContas.remove(nrConta);
+        mapaDeContas.remove(nrConta);
+       
         System.out.println("Conta excluida com sucesso");
 
     }
@@ -139,26 +145,26 @@ public class Agencia {
             }
             s.nextLine();
         } catch (NullPointerException a) {
-            System.out.println("Cliente informado não existe!\n");
+            System.out.println("Cliente informado não existe!");
         }
     }
 
     public void listarUmaConta() {
         try {
-            System.out.println("Digite o número da conta: ");
+            System.out.print("Digite o número da conta: ");
             int nrConta = s.nextInt();
             Conta conta;
             conta = mapaDeContas.get(nrConta);
-            System.out.println("Número da Conta: " + conta.getNumeroConta());
+            System.out.println("\nNúmero da Conta: " + conta.getNumeroConta());
             if (conta instanceof ContaCorrente) {
                 System.out.println("Tipo de conta: Corrente");
             } else if (conta instanceof ContaPoupanca) {
                 System.out.println("Tipo de conta: Poupança");
             }
-            System.out.println("Saldo: " + conta.getSaldo() + "\n");
+            System.out.println("Saldo: " + conta.getSaldo());
             s.nextLine();
         } catch (NullPointerException a) {
-            System.out.println("Conta informada não existe!\n");
+            System.out.println("Conta informada não existe!");
         }
     }
 
@@ -178,7 +184,7 @@ public class Agencia {
             Conta conta = mapaDeContas.get(nrConta);            
             System.out.println("Conta número " + conta.getNumeroConta() + " selecionada");
 
-            System.out.println("Informe novo saldo para a conta:");
+            System.out.print("Informe novo saldo para a conta:");
             double novoSaldo = s.nextDouble();
             conta.setSaldo(novoSaldo);
             System.out.println("Saldo atualizado com sucesso!");
@@ -194,6 +200,7 @@ public class Agencia {
         int opcao;
         Conta conta;
         int numeroConta;
+        double saldo;
 
         do {
             System.out.println("Selecione o tipo de conta:\n");
@@ -203,17 +210,20 @@ public class Agencia {
 
             System.out.print("Digite o número da conta: ");
             numeroConta = s.nextInt();
+            
+            System.out.print("Digite o saldo inicial da conta: ");
+            saldo = s.nextDouble();
 
             switch (opcao) {
 
                 case 1:
-                    conta = new ContaCorrente(titular, numeroConta);
+                    conta = new ContaCorrente(titular, numeroConta, saldo);
                     mapaDeContas.put(numeroConta, conta);
                     titular.mapaDeContas.put(numeroConta, conta);
                     break;
 
                 case 2:
-                    conta = new ContaPoupanca(titular, numeroConta);
+                    conta = new ContaPoupanca(titular, numeroConta, saldo);
                     mapaDeContas.put(numeroConta, conta);
                     titular.mapaDeContas.put(numeroConta, conta);
                     break;
@@ -236,6 +246,7 @@ public class Agencia {
             int opcao;
             Conta conta;
             int numeroConta;
+            double saldo;
 
             do {
                 System.out.println("Selecione o tipo de conta:\n");
@@ -245,17 +256,20 @@ public class Agencia {
 
                 System.out.print("Digite o número da conta: ");
                 numeroConta = s.nextInt();
-
+                
+                System.out.print("Digite o saldo inicial da conta: ");
+                saldo = s.nextDouble();
+            
                 switch (opcao) {
 
                     case 1:
-                        conta = new ContaCorrente(cliente, numeroConta);
+                        conta = new ContaCorrente(cliente, numeroConta, saldo);
                         mapaDeContas.put(numeroConta, conta);
                         cliente.mapaDeContas.put(numeroConta, conta);
                         break;
 
                     case 2:
-                        conta = new ContaPoupanca(cliente, numeroConta);
+                        conta = new ContaPoupanca(cliente, numeroConta, saldo);
                         mapaDeContas.put(numeroConta, conta);
                         cliente.mapaDeContas.put(numeroConta, conta);
                         break;
