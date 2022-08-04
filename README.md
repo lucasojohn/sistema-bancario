@@ -1,2 +1,2 @@
 # sistema-bancario
-Projeto Java de conclusão da cadeira
+Projeto da conclusão de cadeira de orientação a objetos com Java.
